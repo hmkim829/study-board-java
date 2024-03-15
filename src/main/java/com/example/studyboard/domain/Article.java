@@ -2,6 +2,7 @@ package com.example.studyboard.domain;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
@@ -34,10 +35,9 @@ import java.util.Set;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Article {
+public class Article extends AuditingFields{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,21 +56,6 @@ public class Article {
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL) // cascade는 study상 편리하기 위함.
     private final Set<ArticleComment> articleComments = new HashSet<>();
 
-    @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @CreatedBy
-    @Column(nullable = false, updatable = false, length = 100)
-    private String createdBy;
-
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime modifiedAt;
-
-    @LastModifiedBy
-    @Column(nullable = false, length = 100)
-    private String modifiedBy;
 
     private Article(String title, String content, String hashtag) {
         this.title = title;
@@ -81,6 +66,7 @@ public class Article {
     public static Article of(String title, String content, String hashtag) {
         return new Article(title, content, hashtag);
     }
+
 
     @Override
     public boolean equals(Object o) {

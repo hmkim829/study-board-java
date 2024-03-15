@@ -30,10 +30,9 @@ import java.util.Objects;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class ArticleComment {
+public class ArticleComment extends AuditingFields{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,21 +44,6 @@ public class ArticleComment {
     @Column(nullable = false, length = 500)
     private String content;
 
-    @CreatedDate
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @CreatedBy
-    @Column(nullable = false, updatable = false, length = 100)
-    private String createdBy;
-
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime modifiedAt;
-
-    @LastModifiedBy
-    @Column(nullable = false, length = 100)
-    private String modifiedBy;
 
     private ArticleComment(Article article, String content) {
         this.article = article;
@@ -69,6 +53,7 @@ public class ArticleComment {
     public static ArticleComment of(Article article, String content) {
         return new ArticleComment(article, content);
     }
+
 
     @Override
     public boolean equals(Object o) {
