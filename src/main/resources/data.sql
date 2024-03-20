@@ -1,3 +1,6 @@
+insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
+    ('hmkim829', '1234', 'hmkim829', 'hmkim829@gmial.com', 'I am kim.', now(), 'kim', now(), 'kim');
+
 insert into article (title, content, hashtag, created_by, modified_by, created_at, modified_at) values ('Nam nulla.', 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', 'Orange', 'Wyatt', 'Melony', '2024-06-25 22:26:31', '2023-12-31 23:43:31');
 insert into article (title, content, hashtag, created_by, modified_by, created_at, modified_at) values ('Donec ut dolor.', 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', 'Green', 'Layton', 'Gabie', '2023-10-26 20:06:02', '2024-11-28 13:38:41');
 insert into article (title, content, hashtag, created_by, modified_by, created_at, modified_at) values ('Etiam vel augue.', 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.', null, 'Ekaterina', 'Ursuline', '2023-04-06 22:20:02', '2023-12-22 16:46:59');
